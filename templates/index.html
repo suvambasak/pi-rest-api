@@ -21,7 +21,8 @@
         <Button class="btn btn-primary" id="temp">Temperature</Button>
         <Button class="btn btn-primary" id="hum">Humidity</Button>
     </div>
-    <p id="info"></p>
+    <div class="container">
+        <p id="info"></p>
     </div>
 
     <script>
@@ -37,6 +38,7 @@
                     $("#info").append('Data: ' + data.date + '<br>');
                     $("#info").append('Time: ' + data.time + '<br>');
                     $("#info").append('LED Status: ' + data.status + '<br>');
+                    $("#info").append('<hr>');
                 });
             });
 
@@ -52,6 +54,7 @@
                     $("#info").append('Time: ' + data.time + '<br>');
                     $("#info").append('Temperature: ' + data.temperature + '<br>');
                     $("#info").append('Humidity: ' + data.humidity + '<br>');
+                    $("#info").append('<hr>');
                 });
             });
 
@@ -65,6 +68,7 @@
                     $("#info").append('Data: ' + data.date + '<br>');
                     $("#info").append('Time: ' + data.time + '<br>');
                     $("#info").append('Temperature: ' + data.temperature + '<br>');
+                    $("#info").append('<hr>');
                 });
             });
 
@@ -79,6 +83,7 @@
                     $("#info").append('Data: ' + data.date + '<br>');
                     $("#info").append('Time: ' + data.time + '<br>');
                     $("#info").append('Humidity: ' + data.humidity + '<br>');
+                    $("#info").append('<hr>');
                 });
             });
 
