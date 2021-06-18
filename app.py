@@ -62,7 +62,7 @@ def led_on():
 
 
 @app.route('/api/v1/led/off', methods=['GET'])
-def led_on():
+def led_off():
     response = dict()
     response['status'] = red_led.off()
     response['time'], response['date'] = get_timedata()
