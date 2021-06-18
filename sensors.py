@@ -1,8 +1,9 @@
-# import Adafruit_DHT
+import Adafruit_DHT
+
 
 class DHT:
 
-    # sensor = Adafruit_DHT.DHT11
+    sensor = Adafruit_DHT.DHT11
     humidity = None
     temperature = None
 
@@ -12,11 +13,11 @@ class DHT:
     def sense(self):
         try:
 
-            # self.humidity, self.temperature = Adafruit_DHT.read_retry(
-            #     self.sensor, self.gpio)
+            self.humidity, self.temperature = Adafruit_DHT.read_retry(
+                self.sensor, self.gpio)
 
             # TEST
-            self.humidity, self.temperature = 1, 0
+            # self.humidity, self.temperature = 1, 0
 
         except Exception as e:
             print('Exception : DHT-sense'+str(e))
