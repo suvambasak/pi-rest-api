@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>Pi API</title>
+</head>
+
+<body>
+    <div class="container my-5">
+        <Button class="btn btn-primary" id="led_status">LED Status</Button>
+        <Button class="btn btn-primary" id="dht">DHT</Button>
+        <Button class="btn btn-primary" id="temp">Temperature</Button>
+        <Button class="btn btn-primary" id="hum">Humidity</Button>
+    </div>
+    <p id="info"></p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#led_status").click(function () {
+                console.log('led_status');
+
+                $.getJSON('http://127.0.0.1:5000/api/v1/led/status', function (data) {
+                    console.log(data.date);
+                    console.log(data.time);
+                    console.log(data.status);
+
+                    $("#info").append('Data: ' + data.date + '<br>');
+                    $("#info").append('Time: ' + data.time + '<br>');
+                    $("#info").append('LED Status: ' + data.status + '<br>');
+                });
+            });
+
+            $("#dht").click(function () {
+                console.log('dht');
+                $.getJSON('http://127.0.0.1:5000/api/v1/dht', function (data) {
+                    console.log(data.date);
+                    console.log(data.time);
+                    console.log(data.temperature);
+                    console.log(data.humidity);
+
+                    $("#info").append('Data: ' + data.date + '<br>');
+                    $("#info").append('Time: ' + data.time + '<br>');
+                    $("#info").append('Temperature: ' + data.temperature + '<br>');
+                    $("#info").append('Humidity: ' + data.humidity + '<br>');
+                });
+            });
+
+            $("#temp").click(function () {
+                console.log('led_status');
+                $.getJSON('http://127.0.0.1:5000/api/v1/dht/temperature', function (data) {
+                    console.log(data.date);
+                    console.log(data.time);
+                    console.log(data.temperature);
+
+                    $("#info").append('Data: ' + data.date + '<br>');
+                    $("#info").append('Time: ' + data.time + '<br>');
+                    $("#info").append('Temperature: ' + data.temperature + '<br>');
+                });
+            });
+
+
+            $("#hum").click(function () {
+                console.log('led_status');
+                $.getJSON('http://127.0.0.1:5000/api/v1/dht/humidity', function (data) {
+                    console.log(data.date);
+                    console.log(data.time);
+                    console.log(data.humidity);
+
+                    $("#info").append('Data: ' + data.date + '<br>');
+                    $("#info").append('Time: ' + data.time + '<br>');
+                    $("#info").append('Humidity: ' + data.humidity + '<br>');
+                });
+            });
+
+        });
+    </script>
+</body>
+
+</html>
