@@ -10,7 +10,7 @@ class DHT:
     def __init__(self, gpio_pin) -> None:
         self.gpio = gpio_pin
 
-    def sense(self):
+    def sense(self) -> None:
         try:
 
             self.humidity, self.temperature = Adafruit_DHT.read_retry(
@@ -22,13 +22,13 @@ class DHT:
         except Exception as e:
             print('Exception : DHT-sense'+str(e))
 
-    def get_temperature(self):
+    def get_temperature(self) -> int:
         if self.temperature is not None:
             return self.temperature
         else:
             return -1
 
-    def get_humidity(self):
+    def get_humidity(self) -> int:
         if self.humidity is not None:
             return self.humidity
         else:
@@ -50,17 +50,17 @@ class LED:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.gpio, GPIO.OUT)
 
-    def on(self) -> bool:
+    def on(self) -> str:
         if not self.led_status:
             GPIO.output(self.gpio, GPIO.HIGH)
             self.led_status = True
-        return self.led_status
+        return 'ON' if self.led_status else 'OFF'
 
-    def off(self) -> bool:
+    def off(self) -> str:
         if self.led_status:
             GPIO.output(self.gpio, GPIO.LOW)
             self.led_status = False
-        return self.led_status
+        return 'ON' if self.led_status else 'OFF'
 
     def status(self) -> dict:
         led_status = dict()
