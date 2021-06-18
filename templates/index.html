@@ -16,10 +16,12 @@
 
 <body>
     <div class="container my-5">
-        <Button class="btn btn-primary" id="led_status">LED Status</Button>
-        <Button class="btn btn-primary" id="dht">DHT</Button>
-        <Button class="btn btn-primary" id="temp">Temperature</Button>
-        <Button class="btn btn-primary" id="hum">Humidity</Button>
+        <Button class="btn btn-dark" id="led_status">LED Status</Button>
+        <Button class="btn btn-dark" id="led_on">LED ON</Button>
+        <Button class="btn btn-dark" id="led_off">LED OFF</Button>
+        <Button class="btn btn-dark" id="dht">DHT</Button>
+        <Button class="btn btn-dark" id="temp">Temperature</Button>
+        <Button class="btn btn-dark" id="hum">Humidity</Button>
     </div>
     <div class="container">
         <p id="info"></p>
@@ -41,6 +43,37 @@
                     $("#info").append('<hr>');
                 });
             });
+
+            $("#led_on").click(function () {
+                console.log('led_on');
+
+                $.getJSON('http://127.0.0.1:5000/api/v1/led/on', function (data) {
+                    console.log(data.date);
+                    console.log(data.time);
+                    console.log(data.status);
+
+                    $("#info").append('Data: ' + data.date + '<br>');
+                    $("#info").append('Time: ' + data.time + '<br>');
+                    $("#info").append('LED Status: ' + data.status + '<br>');
+                    $("#info").append('<hr>');
+                });
+            });
+
+            $("#led_off").click(function () {
+                console.log('led_off');
+
+                $.getJSON('http://127.0.0.1:5000/api/v1/led/off', function (data) {
+                    console.log(data.date);
+                    console.log(data.time);
+                    console.log(data.status);
+
+                    $("#info").append('Data: ' + data.date + '<br>');
+                    $("#info").append('Time: ' + data.time + '<br>');
+                    $("#info").append('LED Status: ' + data.status + '<br>');
+                    $("#info").append('<hr>');
+                });
+            });
+
 
             $("#dht").click(function () {
                 console.log('dht');
